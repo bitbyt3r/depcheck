@@ -33,12 +33,14 @@ whole = []
 for i in availableGroups:
   if [x for x in i[1] if not(x in available)]:
     print "\n" + i[0] + ":"
-    gaps = set(["\t"+x+"\n" for x in i[1] if not(x in available)]):
-    whole.extend(gaps)
+    gaps = list(set(["\t"+x+"\n" for x in i[1] if not(x in available)]))
+    gaps.sort()
+    whole.extend(list(gaps))
     for j in gaps:
       print j,
 
-whole = set(whole)
-print "\nAggregate Gaps:" + len(whole)
+whole = list(set(whole))
+whole.sort()
+print "\nAggregate Gaps:" + str(len(whole))
 for i in whole:
-  print i
+  print i,
