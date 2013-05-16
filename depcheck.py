@@ -29,8 +29,16 @@ installed = base.doPackageLists('installed').installed
 available = set(installed + available)
 available = [x.name for x in available]	
 availableGroups = [(base.comps.return_groups(x)[0].name, base.comps.return_groups(x)[0].packages) for x in availableGroups]
+whole = []
 for i in availableGroups:
   if [x for x in i[1] if not(x in available)]:
     print "\n" + i[0] + ":"
-    for j in set(["\t"+x+"\n" for x in i[1] if not(x in available)]):
+    gaps = set(["\t"+x+"\n" for x in i[1] if not(x in available)]):
+    whole.extend(gaps)
+    for j in gaps:
       print j,
+
+whole = set(whole)
+print "\nAggregate Gaps:" + len(whole)
+for i in whole:
+  print i
