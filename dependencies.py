@@ -116,8 +116,9 @@ for i in provides:
 print "Getting dependencies..."
 for i in dependencies.keys():
   for j in provides:
-    if j in dependencies[i]:
-      print i, "requires:", j
+    for k in dependencies[i]:
+      if j in k:
+        print i, "requires:", j
 
 #print "Searching directory..."
 #for subdir, dirs, files in os.walk(sys.argv[1]):
