@@ -38,7 +38,7 @@ available = [x.name for x in available]
 availableGroups = [(base.comps.return_groups(x)[0].name, base.comps.return_groups(x)[0].packages) for x in availableGroups]
 whole = []
 for i in availableGroups:
-  if [x for x in i[1] if not(x in available)] and i in allowedGroups:
+  if [x for x in i[1] if not(x in available)] and i[0] in allowedGroups:
     print "\n" + i[0] + ":"
     gaps = list(set(["\t"+x+"\n" for x in i[1] if not(x in available)]))
     gaps.sort()
